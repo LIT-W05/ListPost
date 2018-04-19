@@ -1,0 +1,59 @@
+﻿
+@using WebApplication14.Models
+@model ViewAllViewModel
+
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Edit</th>
+    </tr>
+    
+    @foreach (Person person in Model.People)
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>@person.Age</td>
+            <td>
+                <button class="btn btn-danger edit" data-person-firstname="@person.FirstName" data-person-id="@person.Id">Edit</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+    <form method="post" action="/home/update">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Person Id: <span id="person-id-span"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="person-id-hidden" name="id" />
+                    <input type="text" id="firstName" class="form-control" name="firstName" />
+                    <br />
+                    <input type="text" id="lastName" class="form-control" name="lastName" />
+                    <br />
+                    <input type="text" id="age" class="form-control" name="age" />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </form>
+</div><!-- /.modal -->
+
+@section scripts
+{
+    <script src="/Scripts/viewall.js"></script>
+}

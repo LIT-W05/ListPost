@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+}
+
+<form method="post" action="/home/addpeople">
+    <button type="button" class="btn btn-success" id="add-row">Add Row</button>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+        <tr id="first-row">
+            <td>
+                <input type="text" class="form-control" placeholder="First Name" name="people[0].firstName" />
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="Last Name" name="people[0].lastName" />
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="Age" name="people[0].age" />
+            </td>
+        </tr>
+
+    </table>
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+@section scripts
+{ 
+    <script src="/Scripts/index.js"></script>
+}
